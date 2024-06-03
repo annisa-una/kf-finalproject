@@ -1,6 +1,7 @@
 # kf-finalproject
 --Pembuatan Tabel Baru (berisi gabungan seluruh tabel)
 CREATE TABLE kimia_farma.kf_combined as (
+
 --Memilih kolom yang akan ditampilkan serta pendefinisian kolom tambahan
 SELECT DISTINCT transaction_id, date, kf_final_transaction.branch_id, 
 branch_name, kota, provinsi, kf_kantor_cabang.rating as rating_cabang, customer_name, 
@@ -25,10 +26,12 @@ kf_final_transaction.price as actual_price, discount_percentage,
     WHEN kf_final_transaction.price > 300000 THEN kf_final_transaction.price*(100-discount_percentage)*0.25
     WHEN kf_final_transaction.price > 500000 THEN kf_final_transaction.price*(100-discount_percentage)*0.30
   END as nett_profit,
-  --Menamakan ulang 'rating' menjadi 'rating_transaksi', sesuai panduan
+--Menamakan ulang 'rating' menjadi 'rating_transaksi', sesuai panduan
 kf_final_transaction.rating as rating_transaksi, 
+
 -- Kolom dipilih dari tabel berikut
 FROM kimia_farma.kf_final_transaction
+
 -- Penggabungan tabel kf_product
 FULL OUTER JOIN kimia_farma.kf_product
 ON kf_product.product_id = kf_final_transaction.product_id

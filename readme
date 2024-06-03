@@ -1,1 +1,4 @@
-Pada repository 
+Pada repository ini ditulis syntax pada BigQuery untuk pembuatan tabel analisa
+
+Syntax mencakup: 
+pembuatan tabel; column selection, column renaming, conditional column, dan table joining
